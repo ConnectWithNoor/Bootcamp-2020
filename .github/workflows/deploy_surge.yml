@@ -6,7 +6,7 @@ name: Assignment 1 | Bootcamp2020
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,19 +17,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Install Node
-      uses: actions/setup-node@v2-beta
-      with:
-        node-version: 12
-        
-   # Installing Surge   
-    - name: Install Surge
-      run: npm install -g surge
-    
-   # Deploy to the master branch (continuous Integration)
-    - name: deploy using Surge
-      run: surge ./ http://bootcamp2020_noor_assignment_1.surge.sh/ --token ${{ secrets.SURGE_TOKEN }}
+      # Runs a single command using the runners shell
+      - name: Install Node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 12
+
+      # Installing Surge
+      - name: Install Surge
+        run: npm install -g surge
+
+      # Deploy to the master branch (continuous Integration)
+      - name: deploy using Surge
+        run: surge ./ http://bootcamp2020_noor_assignment_1.surge.sh/ --token ${{ secrets.SURGE_TOKEN }}
